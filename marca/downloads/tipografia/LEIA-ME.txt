@@ -1,0 +1,45 @@
+Solucci . tipografia
+====================
+
+Três famílias, três funções.
+
+ARCHIVO (variável)
+  Papel: título, display, nome de seção, tudo que precisa de presença.
+  Peso de uso: 700 e 800. Largura entre 104 e 112.
+  O itálico com largura esticada é o gesto da marca: é ele que rima com a
+  inclinação do wordmark. Use itálico no título principal, romano nos
+  títulos de seção.
+  Nunca em texto corrido.
+  Autor: Omnibus-Type. Licença: SIL Open Font License 1.1.
+  https://fonts.google.com/specimen/Archivo
+
+IBM PLEX SANS
+  Papel: texto corrido, parágrafo, legenda, interface.
+  Pesos de uso: 400, 500, 600, 700.
+  Autor: IBM. Licença: SIL Open Font License 1.1.
+  https://fonts.google.com/specimen/IBM+Plex+Sans
+
+IBM PLEX MONO
+  Papel: rótulo, numeração, metadado, código, etiqueta de seção.
+  Sempre em caixa alta com entreletra de 0.14em a 0.2em quando for rótulo.
+  Pesos de uso: 400, 600, 700.
+  Autor: IBM. Licença: SIL Open Font License 1.1.
+  https://fonts.google.com/specimen/IBM+Plex+Mono
+
+
+COMO USAR
+---------
+Web: importe solucci-tipografia.css, que já traz o @import do Google Fonts,
+as variáveis e as classes de escala.
+
+Se o projeto precisa hospedar as fontes localmente, baixe os arquivos nos
+links acima e sirva em woff2. As três licenças permitem redistribuição,
+desde que o texto da OFL vá junto.
+
+Impressão e Figma: instale as três famílias pelo Google Fonts. Em documento
+que vai para gráfica, converta o título em curvas se a casa não tiver as
+fontes instaladas.
+
+Substituto quando nada disso estiver disponível: Helvetica Neue Bold no lugar
+do Archivo, e a sans do sistema no lugar do Plex Sans. É queda de qualidade,
+não equivalência, então trate como saída de emergência.

@@ -1,0 +1,4 @@
+# O manual é aberto pra quem tem o link, mas fica fora da busca.
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>

@@ -1,0 +1,214 @@
+{
+  "marca": "Solucci",
+  "versao": "1.0",
+  "cores": {
+    "ink": {
+      "nome": "Ink",
+      "hex": "#16141D",
+      "rgb": [
+        22,
+        20,
+        29
+      ],
+      "cmyk": [
+        24,
+        31,
+        0,
+        89
+      ],
+      "papel": "Cor base. Texto, fundo escuro, assinatura do logo."
+    },
+    "ink-soft": {
+      "nome": "Ink suave",
+      "hex": "#4A5769",
+      "rgb": [
+        74,
+        87,
+        105
+      ],
+      "cmyk": [
+        30,
+        17,
+        0,
+        59
+      ],
+      "papel": "Texto de apoio, parágrafo secundário."
+    },
+    "ink-faint": {
+      "nome": "Ink apagado",
+      "hex": "#8C9EA6",
+      "rgb": [
+        140,
+        158,
+        166
+      ],
+      "cmyk": [
+        16,
+        5,
+        0,
+        35
+      ],
+      "papel": "Legenda, metadado, estado inativo."
+    },
+    "coral": {
+      "nome": "Coral",
+      "hex": "#F5533D",
+      "rgb": [
+        245,
+        83,
+        61
+      ],
+      "cmyk": [
+        0,
+        66,
+        75,
+        4
+      ],
+      "papel": "Cor de ação. Botão, link em destaque, acento do logo."
+    },
+    "coral-deep": {
+      "nome": "Coral fundo",
+      "hex": "#D63A26",
+      "rgb": [
+        214,
+        58,
+        38
+      ],
+      "cmyk": [
+        0,
+        73,
+        82,
+        16
+      ],
+      "papel": "Estado pressionado e hover do coral."
+    },
+    "teal": {
+      "nome": "Teal",
+      "hex": "#0FB5A6",
+      "rgb": [
+        15,
+        181,
+        166
+      ],
+      "cmyk": [
+        92,
+        0,
+        8,
+        29
+      ],
+      "papel": "Cor de ferramenta. Seleção, foco, indicador de estado."
+    },
+    "teal-deep": {
+      "nome": "Teal fundo",
+      "hex": "#0A8C81",
+      "rgb": [
+        10,
+        140,
+        129
+      ],
+      "cmyk": [
+        93,
+        0,
+        8,
+        45
+      ],
+      "papel": "Teal sobre fundo claro, quando precisa de contraste."
+    },
+    "bronze": {
+      "nome": "Bronze",
+      "hex": "#E8A33D",
+      "rgb": [
+        232,
+        163,
+        61
+      ],
+      "cmyk": [
+        0,
+        30,
+        74,
+        9
+      ],
+      "papel": "Acento quente. Destaque em cartão, alerta suave."
+    },
+    "gold": {
+      "nome": "Ouro",
+      "hex": "#FFC24D",
+      "rgb": [
+        255,
+        194,
+        77
+      ],
+      "cmyk": [
+        0,
+        24,
+        70,
+        0
+      ],
+      "papel": "Realce pontual, selo, conquista."
+    },
+    "magenta": {
+      "nome": "Magenta",
+      "hex": "#B23A80",
+      "rgb": [
+        178,
+        58,
+        128
+      ],
+      "cmyk": [
+        0,
+        67,
+        28,
+        30
+      ],
+      "papel": "Acento frio. Divide categorias, contrapõe o coral."
+    },
+    "cream": {
+      "nome": "Creme",
+      "hex": "#FAF8F3",
+      "rgb": [
+        250,
+        248,
+        243
+      ],
+      "cmyk": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "papel": "Fundo claro principal."
+    },
+    "ice": {
+      "nome": "Gelo",
+      "hex": "#E7EBEC",
+      "rgb": [
+        231,
+        235,
+        236
+      ],
+      "cmyk": [
+        2,
+        0,
+        0,
+        7
+      ],
+      "papel": "Fundo claro secundário, base de gradiente."
+    },
+    "bone": {
+      "nome": "Osso",
+      "hex": "#F3F1EC",
+      "rgb": [
+        243,
+        241,
+        236
+      ],
+      "cmyk": [
+        0,
+        1,
+        3,
+        5
+      ],
+      "papel": "Texto sobre fundo escuro."
+    }
+  }
+}

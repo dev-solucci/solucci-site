@@ -1,0 +1,43 @@
+Solucci . paleta oficial
+
+CMYK é conversão direta de RGB, serve de ponto de partida.
+Para impressão, feche a conversão no perfil da gráfica.
+
+Ink            #16141D   rgb(22, 20, 29)            cmyk(24, 31, 0, 89)
+               Cor base. Texto, fundo escuro, assinatura do logo.
+
+Ink suave      #4A5769   rgb(74, 87, 105)           cmyk(30, 17, 0, 59)
+               Texto de apoio, parágrafo secundário.
+
+Ink apagado    #8C9EA6   rgb(140, 158, 166)         cmyk(16, 5, 0, 35)
+               Legenda, metadado, estado inativo.
+
+Coral          #F5533D   rgb(245, 83, 61)           cmyk(0, 66, 75, 4)
+               Cor de ação. Botão, link em destaque, acento do logo.
+
+Coral fundo    #D63A26   rgb(214, 58, 38)           cmyk(0, 73, 82, 16)
+               Estado pressionado e hover do coral.
+
+Teal           #0FB5A6   rgb(15, 181, 166)          cmyk(92, 0, 8, 29)
+               Cor de ferramenta. Seleção, foco, indicador de estado.
+
+Teal fundo     #0A8C81   rgb(10, 140, 129)          cmyk(93, 0, 8, 45)
+               Teal sobre fundo claro, quando precisa de contraste.
+
+Bronze         #E8A33D   rgb(232, 163, 61)          cmyk(0, 30, 74, 9)
+               Acento quente. Destaque em cartão, alerta suave.
+
+Ouro           #FFC24D   rgb(255, 194, 77)          cmyk(0, 24, 70, 0)
+               Realce pontual, selo, conquista.
+
+Magenta        #B23A80   rgb(178, 58, 128)          cmyk(0, 67, 28, 30)
+               Acento frio. Divide categorias, contrapõe o coral.
+
+Creme          #FAF8F3   rgb(250, 248, 243)         cmyk(0, 1, 3, 2)
+               Fundo claro principal.
+
+Gelo           #E7EBEC   rgb(231, 235, 236)         cmyk(2, 0, 0, 7)
+               Fundo claro secundário, base de gradiente.
+
+Osso           #F3F1EC   rgb(243, 241, 236)         cmyk(0, 1, 3, 5)
+               Texto sobre fundo escuro.

@@ -1,0 +1,75 @@
+/* Solucci . tipografia
+ * Três famílias, três funções. Archivo grita, Plex Sans conversa, Plex Mono etiqueta.
+ * As três são livres, sob SIL Open Font License.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --solucci-display: 'Archivo', system-ui, sans-serif;
+  --solucci-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --solucci-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* escala fluida, do rótulo ao display */
+  --solucci-size-label: 10px;
+  --solucci-size-small: 13px;
+  --solucci-size-body: clamp(15px, 1.6vw, 17px);
+  --solucci-size-lead: clamp(17px, 2vw, 21px);
+  --solucci-size-h3: 19px;
+  --solucci-size-h2: clamp(30px, 4.6vw, 54px);
+  --solucci-size-h1: clamp(37px, 7.4vw, 92px);
+}
+
+/* Título de campanha e hero. Archivo em itálico, largura esticada, caixa alta.
+   O itálico é o que dá a inclinação do logo, então título e marca rimam. */
+.solucci-display{
+  font-family: var(--solucci-display);
+  font-weight: 800;
+  font-style: italic;
+  font-variation-settings: 'wdth' 112, 'wght' 800;
+  font-size: var(--solucci-size-h1);
+  line-height: .94;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+}
+
+/* Título de seção. Mesma família, sem itálico, para não cansar. */
+.solucci-h2{
+  font-family: var(--solucci-display);
+  font-weight: 800;
+  font-variation-settings: 'wdth' 110, 'wght' 800;
+  font-size: var(--solucci-size-h2);
+  line-height: 1;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+}
+
+.solucci-h3{
+  font-family: var(--solucci-display);
+  font-weight: 700;
+  font-variation-settings: 'wdth' 104, 'wght' 700;
+  font-size: var(--solucci-size-h3);
+  letter-spacing: -.01em;
+}
+
+/* Texto corrido. Nunca em Archivo: leitura longa pede Plex Sans. */
+.solucci-body{
+  font-family: var(--solucci-body);
+  font-size: var(--solucci-size-body);
+  line-height: 1.6;
+}
+
+.solucci-lead{
+  font-family: var(--solucci-body);
+  font-size: var(--solucci-size-lead);
+  line-height: 1.5;
+}
+
+/* Rótulo, metadado, número de seção, código. Sempre em caixa alta e espaçado. */
+.solucci-label{
+  font-family: var(--solucci-mono);
+  font-size: var(--solucci-size-label);
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}

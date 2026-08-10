@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /marca/
 
 Sitemap: https://solucci.com.br/sitemap.xml
