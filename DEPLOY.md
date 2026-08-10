@@ -21,6 +21,11 @@ git add -A && git commit -m "descreve o que mudou" && git push
 A Hostinger escuta o `push` na branch `main` e publica sozinha. Se quiser forçar, tem o
 botão **Redeploy** no painel.
 
+Esta pasta tem um `credential.helper` local que pega o token da conta `dev-solucci` no
+`gh` na hora do push, porque a conta ativa aqui na máquina é a `marioeve` e ela não tem
+acesso de escrita no repositório. Sem isso o push volta com 403. Está em
+`.git/config`, não vai pro repositório, e nenhum token fica escrito em arquivo.
+
 O HTML tem cache de dez minutos no `.htaccess`, então a mudança pode demorar esse tanto
 pra aparecer pra quem já visitou. CSS e JS têm cache de um ano: se mexer neles e quiser
 ver na hora, recarrega com `Cmd+Shift+R`.
