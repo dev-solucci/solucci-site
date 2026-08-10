@@ -18,9 +18,12 @@ DirectoryIndex index.html
   ExpiresByType image/svg+xml "access plus 1 year"
 </IfModule>
 
-# Força HTTPS
+# Força HTTPS. A documentação do repositório vem junto no deploy, então fica fora do ar.
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  RewriteRule \.(md|markdown)$ - [F,L]
+
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 </IfModule>
