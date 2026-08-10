@@ -36,19 +36,18 @@ Isso é uma vez só. Depois fica valendo o fluxo de cima.
 
 ### 1. Backup do WordPress
 
-hPanel → **Sites** → painel do `solucci.com.br` → **Arquivos** → **Backups**.
+hPanel → **Files** → **Backups** → aba **Restore and download** → tipo **Website
+backup** → **Download website**. Esse tipo traz arquivos e banco no mesmo pacote. O
+plano tem backup automático diário, então já existe um recente pra baixar.
 
-Baixa os dois: o backup de arquivos e o do banco de dados. Se o plano não deixar gerar
-backup na hora, dá pra fazer na mão: no **Gerenciador de arquivos**, compacta a
-`public_html` e baixa o zip; no **phpMyAdmin**, exporta o banco do WordPress.
-
-Confere que os arquivos baixaram e abrem antes de seguir. O passo seguinte apaga.
+Confere que o arquivo baixou e abre antes de seguir. O passo seguinte apaga.
 
 ### 2. Apagar o WordPress
 
-hPanel → **Sites** → painel do `solucci.com.br` → **WordPress** (ou **Instalador
-automático**), e remove a instalação. Isso apaga os arquivos e o banco junto, que é o
-ponto: banco de WordPress abandonado continua sendo porta de entrada.
+hPanel → **Website** → **Auto Installer**. Na caixa **Installed Applications** aparece a
+linha do WordPress apontando pro `solucci.com.br`. Nos três pontinhos no fim da linha,
+**Delete**. Isso apaga os arquivos e o banco junto, que é o ponto: banco de WordPress
+abandonado continua sendo porta de entrada.
 
 Depois passa no **Gerenciador de arquivos** e confirma que a `public_html` está vazia.
 Se sobrou `wp-config.php`, `wp-content` ou `wp-admin`, apaga na mão. O deploy do Git
