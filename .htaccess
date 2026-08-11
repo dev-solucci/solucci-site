@@ -24,8 +24,10 @@ DirectoryIndex index.html
 
   RewriteRule \.(md|markdown)$ - [F,L]
 
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  # Um endereço só. O www respondia 200 junto com o domínio limpo, virava página duplicada.
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^(.*)$ https://solucci.com.br/$1 [R=301,L]
 </IfModule>
 
 # Cabeçalhos de segurança
