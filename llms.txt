@@ -1,0 +1,30 @@
+# Solucci
+
+> Casa criativa de tecnologia, no ar desde 2020. Marca, site, sistema, jogo e trilha, com um parceiro só do problema até o no ar.
+
+A Solucci trabalha em quatro divisões que dividem a mesma casa e o mesmo time, então
+um projeto atravessa da identidade ao código sem trocar de fornecedor no meio.
+
+- Solucci Design: identidade visual, UX/UI e direção de arte
+- Solucci Dev: sites, web apps, WordPress, integração e automação
+- Solucci Games: jogos digitais e analógicos, do conceito ao protótipo jogável
+- Solucci Music: produção, distribuição e palco pra artista fora do circuito
+
+Atendimento remoto, em português e inglês. Está aberta a novos projetos, e a conversa
+começa pelo WhatsApp.
+
+## Páginas
+
+- [Home](https://solucci.com.br/): o que a Solucci faz, as quatro divisões, três trabalhos publicados e o contato
+
+## Trabalhos publicados
+
+- [Serramar Laticínios](https://www.serramar.coop.br/): cooperativa com mais de oitenta anos. Institucional, catálogo de produtos, receitas e área do cooperado
+- [MCG Indústrias](https://mcglab.com.br/): indústria de suplementos e cosméticos. Portal com três unidades, linha de produtos e canal de revenda
+- [Prime Reabilitação](https://www.primereab.com.br/): clínica de reabilitação cardiopulmonar e metabólica. Institucional com agendamento caindo no WhatsApp
+
+## Contato
+
+- Email: contato@solucci.com.br
+- WhatsApp: https://wa.me/5512997303068
+- Site: https://solucci.com.br/
