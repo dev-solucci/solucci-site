@@ -27,9 +27,15 @@ seção. O topo da página não espera por elas.
 ```
 index.html          40 KB, com os SVGs da marca embutidos
 css/style.css       12 KB
-js/main.js           8 KB, sete comportamentos
-assets/og.jpg       56 KB, só para o compartilhamento
+js/main.js           8 KB, oito comportamentos
+assets/bg-solucci.webm   92 KB, fundo do hero
+assets/bg-solucci.mp4   124 KB, mesmo fundo pra quem não lê webm
+assets/og.jpg        56 KB, só para o compartilhamento
 ```
+
+O vídeo de fundo veio com 5,3 MB em 1920 por 1080 com áudio. Como ele entra escurecido
+e desfocado, foi reencodado sem áudio, em 960 por 540, e caiu para 92 KB no WebM. Só um
+dos dois formatos é baixado, o navegador escolhe.
 
 ## A página
 
@@ -37,6 +43,11 @@ assets/og.jpg       56 KB, só para o compartilhamento
 e som"), a explicação concreta embaixo e dois botões, com o WhatsApp em primeiro. O
 título decodifica perto do cursor, trocando as letras por glifos de código, que é o
 único efeito caro da página e roda em cerca de vinte e três elementos.
+
+Atrás de tudo roda o `bg-solucci` em loop, mudo, com desfoque de 11px, uma camada alta
+de preto por cima e um grão leve. É textura, não assunto: o texto continua sendo a
+primeira coisa que se lê. O gradiente original do hero segue embaixo e assume sozinho
+se o vídeo não tocar.
 
 **O que fazemos.** Quatro cartões, um por divisão, uma frase cada. Nada além.
 
@@ -110,7 +121,11 @@ projeto pra tirar do papel."
   senão o texto pula horizontalmente a cada troca de glifo.
 - O `opacity:0` da revelação está preso à classe `.js`, então sem JavaScript a página
   aparece inteira em vez de ficar em branco.
-- `prefers-reduced-motion` desliga placas, batimento, decodificação e rolagem suave.
+- `prefers-reduced-motion` desliga placas, batimento, decodificação, rolagem suave e o
+  vídeo do hero.
+- O vídeo pausa quando o hero sai da tela, porque fundo parado não precisa gastar
+  bateria, e tenta tocar de novo na primeira interação caso a política de autoplay do
+  navegador tenha barrado.
 - O flutuante de WhatsApp só existe abaixo de 720px e aparece depois de 70% da primeira
   tela.
 - A saída do terminal tem altura fixa e rolagem própria, pra página não pular de tamanho

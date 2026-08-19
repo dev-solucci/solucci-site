@@ -1,6 +1,6 @@
 /* =========================================================
    Solucci . versão enxuta
-   Quatro comportamentos, nada além. Sem lib, sem build.
+   Oito comportamentos, nada além. Sem lib, sem build.
    ========================================================= */
 (function () {
 'use strict';
@@ -30,7 +30,44 @@ var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll
 })();
 
 /* ---------------------------------------------------------
-   2. Título que decodifica perto do cursor
+   2. Fundo em vídeo do hero
+   Autoplay mudo costuma passar, mas quando a política do navegador
+   barra, o vídeo congela no primeiro quadro. A primeira interação
+   destrava. Fora da tela, pausa: é fundo, não precisa gastar bateria.
+   --------------------------------------------------------- */
+(function () {
+  var v = $('#heroVid'), hero = $('.hero');
+  if (!v) return;
+  if (reduce) { v.removeAttribute('autoplay'); v.pause(); return; }
+
+  var visivel = true;
+
+  function tocar() {
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  tocar();
+
+  // se a política barrou, a primeira interação destrava
+  function destravar() {
+    if (v.paused && visivel) tocar();
+  }
+  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+    addEventListener(ev, destravar, { once: true, passive: true });
+  });
+
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        visivel = e.isIntersecting;
+        if (visivel) tocar(); else v.pause();
+      });
+    }, { threshold: .01 }).observe(hero);
+  }
+})();
+
+/* ---------------------------------------------------------
+   3. Título que decodifica perto do cursor
    Cada letra troca por glifo de código enquanto o ponteiro
    passa e vai assentando, com a troca desacelerando no fim.
    --------------------------------------------------------- */
@@ -124,7 +161,7 @@ var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll
 })();
 
 /* ---------------------------------------------------------
-   3. Flutuante de WhatsApp, só depois da primeira tela
+   4. Flutuante de WhatsApp, só depois da primeira tela
    --------------------------------------------------------- */
 (function () {
   var wa = $('#waFloat'); if (!wa) return;
@@ -142,7 +179,7 @@ var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll
 })();
 
 /* ---------------------------------------------------------
-   4. Prévia ao vivo dos trabalhos
+   5. Prévia ao vivo dos trabalhos
    O quadro tem 1440 de largura fixa e é reduzido pra caber no
    cartão. O fundo em gradiente da marca fica embaixo e some
    quando o site termina de carregar.
@@ -168,7 +205,7 @@ var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll
 })();
 
 /* ---------------------------------------------------------
-   5. Zona de brincar
+   6. Zona de brincar
    Um terminal de verdade: você digita, ele responde. Os comandos
    dizem o que a casa faz, e um deles guarda o segredo mais velho
    da computação.
@@ -339,7 +376,7 @@ var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll
 })();
 
 /* ---------------------------------------------------------
-   6. Topo transparente sobre o hero, sólido depois dele
+   7. Topo transparente sobre o hero, sólido depois dele
    --------------------------------------------------------- */
 (function () {
   var top = $('.top'), hero = $('.hero');
@@ -353,7 +390,7 @@ var $$ = function (s, c) { return [].slice.call((c || document).querySelectorAll
 })();
 
 /* ---------------------------------------------------------
-   7. Ano do rodapé
+   8. Ano do rodapé
    --------------------------------------------------------- */
 (function () {
   var a = $('#ano');

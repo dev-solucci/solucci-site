@@ -121,7 +121,31 @@ h1,h2,h3,p{margin:0}
     linear-gradient(#191722 0%, #141220 58%, #100E19 100%);
   color:#F3F1EC;border-radius:0 0 34px 34px;overflow:hidden
 }
-.hero-in{width:100%;max-width:1060px;text-align:center;display:grid;justify-items:center;gap:20px}
+/* fundo em vídeo. o gradiente do .hero continua embaixo e serve de
+   base enquanto o vídeo não chega, ou se o navegador não tocar. */
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;border-radius:inherit}
+.hero-vid{
+  position:absolute;top:50%;left:50%;
+  min-width:100%;min-height:100%;width:auto;height:auto;
+  /* a escala compensa a borda que o blur come nas quinas */
+  transform:translate(-50%,-50%) scale(1.14);
+  filter:blur(11px) saturate(.85) contrast(1.04);
+  opacity:.78
+}
+/* camada alta de preto: o vídeo é textura, não assunto */
+.hero-veu{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(72% 56% at 50% 6%, rgba(15,181,166,.14) 0%, rgba(15,181,166,0) 62%),
+    radial-gradient(58% 48% at 88% 96%, rgba(245,83,61,.14) 0%, rgba(245,83,61,0) 66%),
+    linear-gradient(rgba(12,11,18,.76), rgba(10,9,16,.86))
+}
+/* grão leve, o mesmo ruído do resto do projeto */
+.hero-grao{
+  position:absolute;inset:0;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")
+}
+.hero-in{position:relative;z-index:2;width:100%;max-width:1060px;text-align:center;display:grid;justify-items:center;gap:20px}
 .eyebrow{
   display:flex;align-items:center;gap:9px;
   font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.16em;
@@ -145,7 +169,7 @@ h1,h2,h3,p{margin:0}
 @keyframes blink{50%{opacity:0}}
 .lead{max-width:580px;font-size:clamp(16px,1.8vw,19px);line-height:1.5;color:rgba(243,241,236,.72)}
 .hero-scroll{
-  position:absolute;left:50%;bottom:24px;transform:translateX(-50%);
+  position:absolute;left:50%;bottom:24px;z-index:2;transform:translateX(-50%);
   width:22px;height:34px;border:1.5px solid rgba(243,241,236,.28);border-radius:12px;
   display:grid;justify-items:center;padding-top:6px
 }
@@ -433,6 +457,7 @@ h1,h2,h3,p{margin:0}
 @media(prefers-reduced-motion:reduce){
   .js .reveal{opacity:1;transform:none}
   .plate,.heart,.top-status i,.eyebrow .dot,.hero-scroll i{animation:none}
+  .hero-vid{display:none}
   .wk-if{transition:opacity .7s ease}
   .wk:hover .wk-if.pronto{transform:scale(var(--k,.3))}
   html{scroll-behavior:auto}
