@@ -30,7 +30,7 @@ css/style.css       12 KB
 js/main.js           8 KB, oito comportamentos
 assets/bg-solucci.webm   92 KB, fundo do hero
 assets/bg-solucci.mp4   124 KB, mesmo fundo pra quem não lê webm
-assets/og.jpg        56 KB, só para o compartilhamento
+assets/og-solucci.jpg  140 KB, só para o compartilhamento
 ```
 
 O vídeo de fundo veio com 5,3 MB em 1920 por 1080 com áudio. Como ele entra escurecido
