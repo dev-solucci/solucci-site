@@ -16,6 +16,9 @@ DirectoryIndex index.html
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
 </IfModule>
 
 # Força HTTPS. A documentação do repositório vem junto no deploy, então fica fora do ar.
@@ -28,6 +31,15 @@ DirectoryIndex index.html
   RewriteCond %{HTTPS} off [OR]
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^(.*)$ https://solucci.com.br/$1 [R=301,L]
+</IfModule>
+
+# Tipos que o servidor nao conhece sozinho. Sem isso o .webm sai como
+# text/plain e o nosniff logo abaixo faz o navegador recusar o video.
+<IfModule mod_mime.c>
+  AddType video/webm .webm
+  AddType video/mp4 .mp4
+  AddType image/svg+xml .svg
+  AddType application/json .json
 </IfModule>
 
 # Cabeçalhos de segurança
