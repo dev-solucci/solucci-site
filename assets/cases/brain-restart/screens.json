@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Experiência",
+    "heading": "Atividade, retorno e continuidade.",
+    "description": "Cada área responde a uma pergunta: como estou, o que conquistei e como sigo participando.",
+    "screens": [
+      {
+        "id": "dashboard",
+        "title": "Visão geral e progresso",
+        "src": "../assets/cases/brain-restart/dashboard.webp",
+        "width": 375,
+        "height": 1325
+      },
+      {
+        "id": "desempenho",
+        "title": "Medalhas e desempenho",
+        "src": "../assets/cases/brain-restart/desempenho.webp",
+        "width": 375,
+        "height": 812
+      },
+      {
+        "id": "ranking",
+        "title": "Ranking e reconhecimento",
+        "src": "../assets/cases/brain-restart/ranking.webp",
+        "width": 375,
+        "height": 812
+      },
+      {
+        "id": "configuracoes",
+        "title": "Preferências da conta",
+        "src": "../assets/cases/brain-restart/configuracoes.webp",
+        "width": 375,
+        "height": 812
+      }
+    ]
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "title": "Sorteios",
+    "heading": "Da escolha ao resultado.",
+    "description": "Nomes, números e equipes têm controles próprios. O resultado fecha a sequência e oferece caminhos para continuar.",
+    "screens": [
+      {
+        "id": "home",
+        "title": "Escolha do sorteio",
+        "src": "../assets/cases/sorteio-facil/home.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "participantes",
+        "title": "Preparação dos nomes",
+        "src": "../assets/cases/sorteio-facil/participantes.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "numeros",
+        "title": "Intervalo de números",
+        "src": "../assets/cases/sorteio-facil/numeros.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "equipes",
+        "title": "Formação de equipes",
+        "src": "../assets/cases/sorteio-facil/equipes.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "suspense",
+        "title": "Suspense",
+        "src": "../assets/cases/sorteio-facil/suspense.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "resultado",
+        "title": "Resultado animado",
+        "src": "../assets/cases/sorteio-facil/resultado.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "compartilhar",
+        "title": "Compartilhar resultado",
+        "src": "../assets/cases/sorteio-facil/compartilhar.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "aviso",
+        "title": "Opções de compartilhamento",
+        "src": "../assets/cases/sorteio-facil/aviso.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "erro",
+        "title": "Revisão das configurações",
+        "src": "../assets/cases/sorteio-facil/erro.webp",
+        "width": 1125,
+        "height": 2436
+      }
+    ]
+  },
+  {
+    "title": "Listas",
+    "heading": "Preparar uma vez. Usar de novo.",
+    "description": "Criação, importação e edição de participantes evitam que cada sorteio comece do zero.",
+    "screens": [
+      {
+        "id": "listas",
+        "title": "Listas salvas",
+        "src": "../assets/cases/sorteio-facil/listas.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "criar-lista",
+        "title": "Criar uma lista",
+        "src": "../assets/cases/sorteio-facil/criar-lista.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "lista-vazia",
+        "title": "Primeiro participante",
+        "src": "../assets/cases/sorteio-facil/lista-vazia.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "colar-nomes",
+        "title": "Importar nomes",
+        "src": "../assets/cases/sorteio-facil/colar-nomes.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "lista-detalhe",
+        "title": "Gerenciar participantes",
+        "src": "../assets/cases/sorteio-facil/lista-detalhe.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "confirmacao",
+        "title": "Confirmar exclusão",
+        "src": "../assets/cases/sorteio-facil/confirmacao.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "sucesso",
+        "title": "Retorno da operação",
+        "src": "../assets/cases/sorteio-facil/sucesso.webp",
+        "width": 1125,
+        "height": 2436
+      }
+    ]
+  },
+  {
+    "title": "Continuidade",
+    "heading": "O sorteio não termina na revelação.",
+    "description": "Histórico, preferências e importação preservam os próximos passos da experiência.",
+    "screens": [
+      {
+        "id": "configuracoes",
+        "title": "Configurações",
+        "src": "../assets/cases/sorteio-facil/configuracoes.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "historico",
+        "title": "Histórico de sorteios",
+        "src": "../assets/cases/sorteio-facil/historico.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "resultado-historico",
+        "title": "Consultar um resultado",
+        "src": "../assets/cases/sorteio-facil/resultado-historico.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "nomes",
+        "title": "Retorno ao adicionar nome",
+        "src": "../assets/cases/sorteio-facil/nomes.webp",
+        "width": 1125,
+        "height": 2436
+      },
+      {
+        "id": "importar",
+        "title": "Selecionar listas",
+        "src": "../assets/cases/sorteio-facil/importar.webp",
+        "width": 1125,
+        "height": 2436
+      }
+    ]
+  }
+]

@@ -1,0 +1,203 @@
+[
+  {
+    "id": "conta",
+    "title": "Conta digital",
+    "heading": "Serviços essenciais à mão.",
+    "description": "O saldo, as principais operações e o acesso ao suporte compartilham a tela inicial. A autorização por PIN é uma etapa própria da jornada.",
+    "screens": [
+      {
+        "src": "../assets/cases/conlife/conta-01.webp",
+        "title": "Visão da conta",
+        "width": 505,
+        "height": 1092,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/conta-02.webp",
+        "title": "Tipos de transferência",
+        "width": 505,
+        "height": 1092,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/conta-05.webp",
+        "title": "Autorização por PIN",
+        "width": 505,
+        "height": 1092,
+        "source": "Figma"
+      }
+    ]
+  },
+  {
+    "id": "pix",
+    "title": "Pix",
+    "heading": "Pagar e gerenciar chaves.",
+    "description": "As opções de pagamento ficam explícitas. A leitura de QR Code e a confirmação da portabilidade têm telas dedicadas.",
+    "screens": [
+      {
+        "src": "../assets/cases/conlife/pix-01.webp",
+        "title": "Formas de pagamento",
+        "width": 507,
+        "height": 1098,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/pix-02.webp",
+        "title": "Leitura de QR Code",
+        "width": 507,
+        "height": 1098,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/pix-06.webp",
+        "title": "Portabilidade autorizada",
+        "width": 507,
+        "height": 1097,
+        "source": "Figma"
+      }
+    ]
+  },
+  {
+    "id": "telecom",
+    "title": "Telecom",
+    "heading": "Da escolha do plano à recarga.",
+    "description": "O fluxo prevê quem já tem conta digital e quem precisa de um ponto de recarga. Cada etapa explica a próxima ação.",
+    "screens": [
+      {
+        "src": "../assets/cases/conlife/telecom-01.webp",
+        "title": "Seleção do plano",
+        "width": 513,
+        "height": 1111,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/telecom-02.webp",
+        "title": "Sem conta digital",
+        "width": 513,
+        "height": 1111,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/telecom-03.webp",
+        "title": "Revisão da recarga",
+        "width": 513,
+        "height": 1105,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/telecom-04.webp",
+        "title": "Pagamento por Pix",
+        "width": 510,
+        "height": 1105,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/telecom-05.webp",
+        "title": "Recarga realizada",
+        "width": 509,
+        "height": 1106,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/telecom-06.webp",
+        "title": "Portabilidade do número",
+        "width": 513,
+        "height": 1111,
+        "source": "Figma"
+      }
+    ]
+  },
+  {
+    "id": "convenio",
+    "title": "Convênio",
+    "heading": "Benefícios dentro da mesma experiência.",
+    "description": "Cadastro do cartão, explicações de uso e consulta de estabelecimentos fazem parte do módulo de convênio.",
+    "screens": [
+      {
+        "src": "../assets/cases/conlife/convenio-01.webp",
+        "title": "Visão dos benefícios",
+        "width": 512,
+        "height": 1111,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/convenio-02.webp",
+        "title": "Adicionar cartão",
+        "width": 512,
+        "height": 1109,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/convenio-03.webp",
+        "title": "Entender o saque",
+        "width": 512,
+        "height": 1109,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/convenio-04.webp",
+        "title": "Estabelecimentos",
+        "width": 512,
+        "height": 1109,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/convenio-06.webp",
+        "title": "Como solicitar",
+        "width": 511,
+        "height": 1109,
+        "source": "Figma"
+      }
+    ]
+  },
+  {
+    "id": "fitness",
+    "title": "FitAnywhere",
+    "heading": "Da descoberta à adesão.",
+    "description": "A jornada apresenta o benefício, coleta os dados da adesão, confirma a assinatura e comunica a conclusão.",
+    "screens": [
+      {
+        "src": "../assets/cases/conlife/fitness-01.webp",
+        "title": "Acesso ao benefício",
+        "width": 506,
+        "height": 1096,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/fitness-02.webp",
+        "title": "Conhecer o FitAnywhere",
+        "width": 506,
+        "height": 1096,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/fitness-03.webp",
+        "title": "Dados para adesão",
+        "width": 506,
+        "height": 1096,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/fitness-04.webp",
+        "title": "Revisão da assinatura",
+        "width": 506,
+        "height": 1096,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/fitness-05.webp",
+        "title": "Autorização",
+        "width": 506,
+        "height": 1096,
+        "source": "Figma"
+      },
+      {
+        "src": "../assets/cases/conlife/fitness-06.webp",
+        "title": "Assinatura realizada",
+        "width": 506,
+        "height": 1096,
+        "source": "Figma"
+      }
+    ]
+  }
+]

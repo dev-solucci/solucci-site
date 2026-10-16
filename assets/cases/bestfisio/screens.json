@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Plataforma",
+    "heading": "Do panorama ao paciente.",
+    "description": "Os mesmos eixos de navegação acompanham a mudança de contexto, do planejamento da agenda à leitura de informações individuais.",
+    "screens": [
+      {
+        "id": "dashboard",
+        "title": "Visão da operação",
+        "src": "../assets/cases/bestfisio/dashboard.webp",
+        "width": 1440,
+        "height": 1020
+      },
+      {
+        "id": "agenda",
+        "title": "Agenda do profissional",
+        "src": "../assets/cases/bestfisio/agenda.webp",
+        "width": 1440,
+        "height": 1020
+      },
+      {
+        "id": "paciente",
+        "title": "Informações do paciente",
+        "src": "../assets/cases/bestfisio/paciente.webp",
+        "width": 1440,
+        "height": 1020
+      },
+      {
+        "id": "configuracoes",
+        "title": "Configurações da conta",
+        "src": "../assets/cases/bestfisio/configuracoes.webp",
+        "width": 1440,
+        "height": 1020
+      }
+    ]
+  }
+]

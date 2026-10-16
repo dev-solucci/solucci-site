@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Rede profissional",
+    "heading": "Encontrar pessoas e manter a conversa.",
+    "description": "A busca dá contexto às conexões. Comunidades e conquistas prolongam a participação para além da primeira visita.",
+    "screens": [
+      {
+        "id": "feed",
+        "title": "Feed e descoberta",
+        "src": "../assets/cases/coonect/feed.webp",
+        "width": 1440,
+        "height": 3150
+      },
+      {
+        "id": "busca",
+        "title": "Busca por afinidades",
+        "src": "../assets/cases/coonect/busca.webp",
+        "width": 1440,
+        "height": 1347
+      },
+      {
+        "id": "perfil",
+        "title": "Perfil da empresa",
+        "src": "../assets/cases/coonect/perfil.webp",
+        "width": 1440,
+        "height": 1024
+      },
+      {
+        "id": "comunidades",
+        "title": "Conversas e comunidades",
+        "src": "../assets/cases/coonect/comunidades.webp",
+        "width": 1440,
+        "height": 1274
+      },
+      {
+        "id": "conquistas",
+        "title": "Atividade e conquistas",
+        "src": "../assets/cases/coonect/conquistas.webp",
+        "width": 1440,
+        "height": 1416
+      }
+    ]
+  }
+]

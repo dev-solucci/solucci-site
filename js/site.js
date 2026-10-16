@@ -45,5 +45,25 @@
     updateVideo();
   },{threshold:.15}).observe(video);
   document.addEventListener('visibilitychange',updateVideo);
+  document.querySelectorAll('.capability-list summary').forEach(summary => {
+    let feedbackTimer;
+    const title = summary.querySelector('.cap-title');
+    function feedback() {
+      clearTimeout(feedbackTimer);
+      title.classList.remove('cap-active');
+      void title.offsetWidth;
+      title.classList.add('cap-active');
+      feedbackTimer = setTimeout(() => title.classList.remove('cap-active'), 850);
+    }
+    summary.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'mouse') feedback();
+    });
+    summary.addEventListener('click', feedback);
+    summary.addEventListener('focus', feedback);
+    summary.addEventListener('pointerleave', () => {
+      clearTimeout(feedbackTimer);
+      title.classList.remove('cap-active');
+    });
+  });
   setMotion();
 })();

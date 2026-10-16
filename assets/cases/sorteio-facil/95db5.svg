@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="24.328" height="11.3333" viewBox="0 0 24.328 11.3333" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Battery">
+<mask id="stroke0_0_98" fill="white">
+<path d="M0 2.66666C0 1.19391 1.19391 0 2.66667 0H19.3333C20.8061 0 22 1.19391 22 2.66667V8.66667C22 10.1394 20.8061 11.3333 19.3333 11.3333H2.66667C1.19391 11.3333 0 10.1394 0 8.66667V2.66666Z" fill-rule="evenodd" clip-rule="evenodd"/>
+</mask>
+<path id="Rectangle" opacity="0.35" d="M2.66667 11.3333H19.3333C20.8061 11.3333 22 10.1394 22 8.66667V2.66667C22 1.19391 20.8061 0 19.3333 0H2.66667C1.19391 0 0 1.19391 0 2.66666V8.66667C0 10.1394 1.19391 11.3333 2.66667 11.3333Z" stroke-width="2" stroke="white" mask="url(#stroke0_0_98)"/>
+<path id="Combined Shape" opacity="0.4" d="M23 3.66675V7.66675C23.8047 7.32797 24.328 6.53988 24.328 5.66675C24.328 4.79361 23.8047 4.00552 23 3.66675" fill="white"/>
+<path id="Rectangle_2" d="M2 3.33333C2 2.59695 2.59695 2 3.33333 2H18.6667C19.403 2 20 2.59695 20 3.33333V8C20 8.73638 19.403 9.33333 18.6667 9.33333H3.33333C2.59695 9.33333 2 8.73638 2 8V3.33333Z" fill="white"/>
+</g>
+</svg>
