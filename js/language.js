@@ -29,7 +29,7 @@
     button.type = 'button';
     button.dataset.locale = code;
     button.lang = lang;
-    button.innerHTML = `<span class="language-scene" aria-hidden="true"><img src="${sceneBase}${code}-cartoon-v3.png" alt="" loading="lazy"></span><span class="language-code">${code.toUpperCase()}</span><span class="language-name">${name}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg>`;
+    button.innerHTML = `<span class="language-scene" aria-hidden="true"><img src="${sceneBase}${code}-cartoon-v3.webp" alt="" loading="lazy"></span><span class="language-code">${code.toUpperCase()}</span><span class="language-name">${name}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg>`;
     button.addEventListener('click', () => { current = code; applyLanguage(); panel.close(); });
     options.append(button);
   });
@@ -81,7 +81,14 @@
     const greetings = {br: 'Oi, Solucci. Quero conversar sobre um projeto.', us: 'Hi, Solucci. I would like to discuss a project.', es: 'Hola, Solucci. Quiero hablar sobre un proyecto.', fr: 'Bonjour Solucci. Je souhaite discuter d’un projet.'};
     document.querySelectorAll('a[href^="https://wa.me/5512981569832"]').forEach(link => {
       const contact = new URL(link.href);
-      contact.searchParams.set('text', greetings[current]);
+      const project = link.dataset.contactCase;
+      const caseGreetings = {
+        br: `Oi, Solucci. Vi o case ${project} e quero conversar sobre meu projeto.`,
+        us: `Hi, Solucci. I saw the ${project} case study and would like to discuss my project.`,
+        es: `Hola, Solucci. Vi el caso ${project} y quiero hablar sobre mi proyecto.`,
+        fr: `Bonjour Solucci. J’ai vu le projet ${project} et souhaite parler de mon projet.`
+      };
+      contact.searchParams.set('text', project ? caseGreetings[current] : greetings[current]);
       link.href = contact.href;
     });
     options.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.locale === current)));
