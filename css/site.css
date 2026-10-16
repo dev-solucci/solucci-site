@@ -20,3 +20,5 @@ html[data-motion="paused"]{scroll-behavior:auto}html[data-motion="paused"] *,htm
 
 html:not(.js) #motion-toggle,html:not(.js) .menu-toggle{display:none}
 @media(max-width:760px){html:not(.js) .header nav{display:flex}html:not(.js) .header nav>a:not(.nav-contact){display:none}html:not(.js) .nav-contact{font-size:12px}html:not(.js) .nav-contact span{margin-left:10px}}
+
+.arrow-icon{display:inline-block;width:1em;height:1em;vertical-align:-.12em;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:square;stroke-linejoin:miter;flex-shrink:0}.contact-arrow{display:inline-flex;align-items:center;justify-content:center}.contact-arrow .arrow-icon{width:.9em;height:.9em;vertical-align:0}
