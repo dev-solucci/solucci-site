@@ -40,6 +40,8 @@ DirectoryIndex index.html
   AddType video/mp4 .mp4
   AddType image/svg+xml .svg
   AddType application/json .json
+  AddType application/octet-stream .bin
+  AddType font/woff2 .woff2
 </IfModule>
 
 # Cabeçalhos de segurança
