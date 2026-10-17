@@ -123,7 +123,7 @@
     cancelAnimationFrame(frame);
     scene.classList.remove('live');
   });
-  fetch('assets/simbolo.bin').then(response => {
+  fetch('assets/simbolo.bin?v=restauro1').then(response => {
     if (!response.ok) throw new Error('Malha indisponível');
     return response.arrayBuffer();
   }).then(data => {
