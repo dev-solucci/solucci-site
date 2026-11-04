@@ -22,28 +22,40 @@
   matchMedia('(min-width: 761px)').addEventListener('change',closeMenu);
   document.getElementById('year').textContent = new Date().getFullYear();
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const motion = document.getElementById('motion-toggle');
-  const video = document.querySelector('.factory video');
+  const motionButtons = document.querySelectorAll('#motion-toggle, .contact-motion');
+  const videos = new Map(Array.from(document.querySelectorAll('.factory video, .contact-film video'), video => [video, false]));
   let paused = reduced.matches;
-  let videoVisible = false;
   function updateVideo() {
-    if (paused || !videoVisible || document.hidden) video.pause();
-    else video.play().catch(() => { video.dataset.playback = 'poster'; });
+    videos.forEach((visible, video) => {
+      if (paused || !visible || document.hidden) video.pause();
+      else {
+        const source = video.querySelector('source[data-src]');
+        if (source) {
+          source.src = source.dataset.src;
+          delete source.dataset.src;
+          video.load();
+        }
+        video.play().catch(() => { video.dataset.playback = 'poster'; });
+      }
+    });
   }
   function setMotion() {
     document.documentElement.dataset.motion = paused ? 'paused' : 'playing';
-    motion.setAttribute('aria-pressed',String(paused));
-    motion.querySelector('.motion-label').textContent = paused ? 'Ativar movimento' : 'Pausar movimento';
-    motion.querySelector('.motion-icon').textContent = paused ? '▷' : 'Ⅱ';
+    motionButtons.forEach(motion => {
+      motion.setAttribute('aria-pressed',String(paused));
+      motion.querySelector('.motion-label').textContent = paused ? 'Ativar movimento' : 'Pausar movimento';
+      motion.querySelector('.motion-icon').textContent = paused ? '▷' : 'Ⅱ';
+    });
     document.dispatchEvent(new CustomEvent('solucci:motion',{detail:{paused}}));
     updateVideo();
   }
-  motion.addEventListener('click',() => { paused = !paused; setMotion(); });
+  motionButtons.forEach(motion => motion.addEventListener('click',() => { paused = !paused; setMotion(); }));
   reduced.addEventListener('change',() => { paused = reduced.matches; setMotion(); });
-  new IntersectionObserver(entries => {
-    videoVisible = entries[0].isIntersecting;
+  const videoObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => videos.set(entry.target, entry.isIntersecting));
     updateVideo();
-  },{threshold:.15}).observe(video);
+  },{threshold:.15});
+  videos.forEach((visible, video) => videoObserver.observe(video));
   document.addEventListener('visibilitychange',updateVideo);
   document.querySelectorAll('.capability-list summary').forEach(summary => {
     let feedbackTimer;
