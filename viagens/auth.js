@@ -1,0 +1,9 @@
+const form=document.querySelector('#login-form'),button=document.querySelector('#login-button'),error=document.querySelector('#auth-error');
+const params=new URLSearchParams(location.hash.slice(1)),token=params.get('ativar');
+let session;
+if(token){history.replaceState(null,'',location.pathname);document.querySelector('#auth-title').textContent='Seu espaço está pronto.';document.querySelector('#auth-description').textContent='Defina uma senha com pelo menos 12 caracteres para ativar sua conta.';button.textContent='Criar meu acesso';form.elements.username.value=params.get('usuario')||'';form.elements.password.minLength=12;form.elements.password.autocomplete='new-password';}
+async function request(action,body){const r=await fetch('api.php?action='+action,{method:body?'POST':'GET',credentials:'same-origin',headers:body?{'Content-Type':'application/json','X-CSRF-Token':session.csrf}:{},...(body?{body:JSON.stringify(body)}:{})});const d=await r.json();if(!r.ok)throw new Error(d.error);return d;}
+function loadClient(){form.removeEventListener('submit',login);const script=document.createElement('script');script.src='api.php?action=client';script.onerror=()=>{error.textContent='Não foi possível carregar o painel. Atualize a página.';};document.head.append(script);}
+async function login(e){e.preventDefault();button.disabled=true;error.textContent='';try{session=await request(token?'activate':'login',{username:form.elements.username.value,password:form.elements.password.value,token});form.reset();loadClient();}catch(err){error.textContent=err.message;}finally{button.disabled=false;}}
+form.addEventListener('submit',login);
+try{session=await request('session');if(session.user&&!token)loadClient();else document.querySelector('#auth').hidden=false;}catch{document.querySelector('#auth').hidden=false;error.textContent='Não foi possível conectar. Atualize a página para tentar novamente.';}
