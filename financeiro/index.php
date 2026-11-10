@@ -55,7 +55,32 @@ foreach($d['lancamentos'] as $x){if(isset($x['vencimento']) && str_starts_with($
 usort($bills,fn($a,$b)=>strcmp($a['vencimento'],$b['vencimento']));
 ?><main><div class="intro"><h1>Novembro <em>2026</em></h1><p>Consulta ao Gmail em <?=h(day($d['ultima_consulta_gmail']))?></p></div>
 <div class="cols"><section class="hero"><h2>Saldo após contas previstas</h2><strong><?=h(money($cash-$deduct))?></strong><p>Considera os saldos informados em reais e as contas de novembro com valor conhecido.</p><footer><span>Em conta <b><?=h(money($cash))?></b></span><span>A reservar <b><?=h(money($deduct))?></b></span></footer></section>
-<section class="accounts"><h2>Saldos informados</h2><?php row('Itaú',money($s['Itau_BRL']),$s['Itau_BRL_referencia']??'');if(isset($s['Mercado_Pago_BRL']))row('Mercado Pago',money($s['Mercado_Pago_BRL']),$s['Mercado_Pago_referencia']??'');row('Inter',money($s['Inter_BRL']));if(isset($s['Asaas_BRL']))row('Asaas',money($s['Asaas_BRL']));row('Nomad',money($s['Nomad_USD'],'US$'));row('Em espécie',money($s['especie_COP'],'COP'));?><small>Demais saldos de <?=h(day($s['data']))?></small></section></div>
+<section class="accounts"><h2>Saldos informados</h2><?php row('Itaú',money($s['Itau_BRL']),$s['Itau_BRL_referencia']??'');if(isset($s['Mercado_Pago_BRL']))row('Mercado Pago',money($s['Mercado_Pago_BRL']),$s['Mercado_Pago_referencia']??'');row('Inter',money($s['Inter_BRL']));if(isset($s['Asaas_BRL']))row('Asaas',money($s['Asaas_BRL']));
+$base = $d['nomad_base_calculo'] ?? null;
+if ($base) {
+    $cents = (int) round($base['usd'] * 100);
+    $latest = $base['primeiro_dia_incluido'];
+    foreach ($d['lancamentos'] as $entry) {
+        $date = $entry['data_local'] ?? $entry['data'] ?? $entry['data_captura'] ?? '';
+        if ($entry['conta'] !== 'Nomad' || $date < $base['primeiro_dia_incluido']) continue;
+        if (in_array($entry['estado'] ?? '', ['cancelado', 'recusado'], true)) continue;
+        if ($entry['tipo'] === 'câmbio' && isset($entry['destino_usd'])) {
+            $change = $entry['destino_usd'];
+        } elseif (in_array($entry['tipo'], ['compra', 'saque'], true) && isset($entry['valor_usd'])) {
+            $change = -$entry['valor_usd'];
+        } elseif (in_array($entry['tipo'], ['estorno', 'depósito', 'recebimento'], true) && isset($entry['valor_usd'])) {
+            $change = $entry['valor_usd'];
+        } else {
+            continue;
+        }
+        $cents += (int) round($change * 100);
+        $latest = max($latest, $date, $entry['data_captura'] ?? '');
+    }
+    row('Nomad', money($cents / 100, 'US$'), 'Estimativa pelas movimentações até '.day($latest).', incluindo compras em processamento.');
+} else {
+    row('Nomad', money($s['Nomad_USD'], 'US$'));
+}
+row('Em espécie',money($s['especie_COP'],'COP'));?><small>Demais saldos de <?=h(day($s['data']))?></small></section></div>
 <div class="details"><section><h2>Próximas contas</h2><?php foreach($bills as $x)row($x['conta'],money($x['valor_brl']),day($x['vencimento']));foreach($d['lancamentos'] as $x)if(isset($x['mes_vencimento']))row($x['conta'].' · '.($x['final']??''),money($x['valor_brl']),'Fatura parcial · '.substr($x['mes_vencimento'],5).'/'.substr($x['mes_vencimento'],0,4));?>
 <h2>Recebimentos</h2><?php foreach ($future as $x) {
     $amount = isset($x['brl_previstos']) ? money($x['brl_previstos']) : money($x['usd_previstos'], 'US$');
