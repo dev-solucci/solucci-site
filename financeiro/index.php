@@ -50,37 +50,22 @@ function csrf(){echo '<input type="hidden" name="csrf" value="'.h($_SESSION['csr
 <?php if(!$auth):?><main class="login"><div class="art"><img src="assets/simbolo.png" alt=""></div><section><h1>Central financeira<span>.</span></h1><form method="post"><?php csrf();?><label>Usuário<input name="usuario" required autocomplete="username" autocapitalize="none"></label><label>Senha<input type="password" name="senha" required autocomplete="current-password"></label><?php if($error):?><p role="alert"><?=h($error)?></p><?php endif;?><button class="action">Entrar</button></form></section></main>
 <?php elseif(!$d):?><main><h1>Central financeira</h1><p>Aguardando a primeira atualização.</p></main>
 <?php else: $s=$d['saldos_informados'];$p=$d['patrimonio_informado']??[];$c=$d['cartoes_informados']??[];$future=$d['recebimentos_previstos']??[];
+$positions=$d['saldos_calculados']??[];
+foreach ($positions as $account=>$position) $s[$account]=$position['valor'];
 $cash=$s['Itau_BRL']+$s['Inter_BRL']+($s['Asaas_BRL']??0)+($s['Mercado_Pago_BRL']??0);$bills=[];$deduct=0;
 foreach($d['lancamentos'] as $x){if(isset($x['vencimento']) && str_starts_with($x['vencimento'],$d['mes']) && !in_array($x['pagamento']??'',['pago','paga','quitado','quitada'],true)){ $bills[]=$x;$deduct+=$x['valor_brl']??0; }}
 usort($bills,fn($a,$b)=>strcmp($a['vencimento'],$b['vencimento']));
 ?><main><div class="intro"><h1>Novembro <em>2026</em></h1><p>Consulta ao Gmail em <?=h(day($d['ultima_consulta_gmail']))?></p></div>
 <div class="cols"><section class="hero"><h2>Saldo após contas previstas</h2><strong><?=h(money($cash-$deduct))?></strong><p>Considera os saldos informados em reais e as contas de novembro com valor conhecido.</p><footer><span>Em conta <b><?=h(money($cash))?></b></span><span>A reservar <b><?=h(money($deduct))?></b></span></footer></section>
-<section class="accounts"><h2>Saldos informados</h2><?php row('Itaú',money($s['Itau_BRL']),$s['Itau_BRL_referencia']??'');if(isset($s['Mercado_Pago_BRL']))row('Mercado Pago',money($s['Mercado_Pago_BRL']),$s['Mercado_Pago_referencia']??'');row('Inter',money($s['Inter_BRL']));if(isset($s['Asaas_BRL']))row('Asaas',money($s['Asaas_BRL']));
-$base = $d['nomad_base_calculo'] ?? null;
-if ($base) {
-    $cents = (int) round($base['usd'] * 100);
-    $latest = $base['primeiro_dia_incluido'];
-    foreach ($d['lancamentos'] as $entry) {
-        $date = $entry['data_local'] ?? $entry['data'] ?? $entry['data_captura'] ?? '';
-        if ($entry['conta'] !== 'Nomad' || $date < $base['primeiro_dia_incluido']) continue;
-        if (in_array($entry['estado'] ?? '', ['cancelado', 'recusado'], true)) continue;
-        if ($entry['tipo'] === 'câmbio' && isset($entry['destino_usd'])) {
-            $change = $entry['destino_usd'];
-        } elseif (in_array($entry['tipo'], ['compra', 'saque'], true) && isset($entry['valor_usd'])) {
-            $change = -$entry['valor_usd'];
-        } elseif (in_array($entry['tipo'], ['estorno', 'depósito', 'recebimento'], true) && isset($entry['valor_usd'])) {
-            $change = $entry['valor_usd'];
-        } else {
-            continue;
-        }
-        $cents += (int) round($change * 100);
-        $latest = max($latest, $date, $entry['data_captura'] ?? '');
-    }
-    row('Nomad', money($cents / 100, 'US$'), 'Estimativa pelas movimentações até '.day($latest).', incluindo compras em processamento.');
-} else {
-    row('Nomad', money($s['Nomad_USD'], 'US$'));
+<section class="accounts"><h2>Saldos por conta</h2><?php
+$accounts = ['Itau_BRL'=>'Itaú','Mercado_Pago_BRL'=>'Mercado Pago','Inter_BRL'=>'Inter','Asaas_BRL'=>'Asaas','Nomad_USD'=>'Nomad','especie_COP'=>'Em espécie'];
+foreach ($accounts as $account=>$label) {
+    $position = $positions[$account] ?? null;
+    $currency = ['Nomad_USD'=>'US$', 'especie_COP'=>'COP'][$account] ?? 'R$';
+    $reference = $position ? $position['origem'].' · '.day($position['data']) : '';
+    row($label, money($s[$account] ?? null, $currency), $reference);
 }
-row('Em espécie',money($s['especie_COP'],'COP'));?><small>Demais saldos de <?=h(day($s['data']))?></small></section></div>
+?></section></div>
 <div class="details"><section><h2>Próximas contas</h2><?php foreach($bills as $x)row($x['conta'],money($x['valor_brl']),day($x['vencimento']));foreach($d['lancamentos'] as $x)if(isset($x['mes_vencimento']))row($x['conta'].' · '.($x['final']??''),money($x['valor_brl']),'Fatura parcial · '.substr($x['mes_vencimento'],5).'/'.substr($x['mes_vencimento'],0,4));?>
 <h2>Recebimentos</h2><?php foreach ($future as $x) {
     $amount = isset($x['brl_previstos']) ? money($x['brl_previstos']) : money($x['usd_previstos'], 'US$');
