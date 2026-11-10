@@ -50,12 +50,12 @@ function csrf(){echo '<input type="hidden" name="csrf" value="'.h($_SESSION['csr
 <?php if(!$auth):?><main class="login"><div class="art"><img src="assets/simbolo.png" alt=""></div><section><h1>Central financeira<span>.</span></h1><form method="post"><?php csrf();?><label>Usuário<input name="usuario" required autocomplete="username" autocapitalize="none"></label><label>Senha<input type="password" name="senha" required autocomplete="current-password"></label><?php if($error):?><p role="alert"><?=h($error)?></p><?php endif;?><button class="action">Entrar</button></form></section></main>
 <?php elseif(!$d):?><main><h1>Central financeira</h1><p>Aguardando a primeira atualização.</p></main>
 <?php else: $s=$d['saldos_informados'];$p=$d['patrimonio_informado']??[];$c=$d['cartoes_informados']??[];$future=$d['recebimentos_previstos']??[];
-$cash=$s['Itau_BRL']+$s['Inter_BRL']+($s['Asaas_BRL']??0);$bills=[];$deduct=0;
+$cash=$s['Itau_BRL']+$s['Inter_BRL']+($s['Asaas_BRL']??0)+($s['Mercado_Pago_BRL']??0);$bills=[];$deduct=0;
 foreach($d['lancamentos'] as $x){if(isset($x['vencimento']) && str_starts_with($x['vencimento'],$d['mes']) && !in_array($x['pagamento']??'',['pago','paga','quitado','quitada'],true)){ $bills[]=$x;$deduct+=$x['valor_brl']??0; }}
 usort($bills,fn($a,$b)=>strcmp($a['vencimento'],$b['vencimento']));
 ?><main><div class="intro"><h1>Novembro <em>2026</em></h1><p>Consulta ao Gmail em <?=h(day($d['ultima_consulta_gmail']))?></p></div>
 <div class="cols"><section class="hero"><h2>Saldo após contas previstas</h2><strong><?=h(money($cash-$deduct))?></strong><p>Considera os saldos informados em reais e as contas de novembro com valor conhecido.</p><footer><span>Em conta <b><?=h(money($cash))?></b></span><span>A reservar <b><?=h(money($deduct))?></b></span></footer></section>
-<section class="accounts"><h2>Saldos informados</h2><?php row('Itaú',money($s['Itau_BRL']));row('Inter',money($s['Inter_BRL']));if(isset($s['Asaas_BRL']))row('Asaas',money($s['Asaas_BRL']));row('Nomad',money($s['Nomad_USD'],'US$'));row('Em espécie',money($s['especie_COP'],'COP'));?><small>Posição de <?=h(day($s['data']))?></small></section></div>
+<section class="accounts"><h2>Saldos informados</h2><?php row('Itaú',money($s['Itau_BRL']),$s['Itau_BRL_referencia']??'');if(isset($s['Mercado_Pago_BRL']))row('Mercado Pago',money($s['Mercado_Pago_BRL']),$s['Mercado_Pago_referencia']??'');row('Inter',money($s['Inter_BRL']));if(isset($s['Asaas_BRL']))row('Asaas',money($s['Asaas_BRL']));row('Nomad',money($s['Nomad_USD'],'US$'));row('Em espécie',money($s['especie_COP'],'COP'));?><small>Demais saldos de <?=h(day($s['data']))?></small></section></div>
 <div class="details"><section><h2>Próximas contas</h2><?php foreach($bills as $x)row($x['conta'],money($x['valor_brl']),day($x['vencimento']));foreach($d['lancamentos'] as $x)if(isset($x['mes_vencimento']))row($x['conta'].' · '.($x['final']??''),money($x['valor_brl']),'Fatura parcial · '.substr($x['mes_vencimento'],5).'/'.substr($x['mes_vencimento'],0,4));?>
 <h2>Recebimentos</h2><?php foreach ($future as $x) {
     $amount = isset($x['brl_previstos']) ? money($x['brl_previstos']) : money($x['usd_previstos'], 'US$');
@@ -63,7 +63,18 @@ usort($bills,fn($a,$b)=>strcmp($a['vencimento'],$b['vencimento']));
     row(day($x['data']), $amount, implode(' · ', $description));
 }?></section>
 <section><h2>Patrimônio e benefícios</h2><?php row('Investimentos Itaú',money($p['investimentos_itau_brl']??null));row('Carteira LATAM',money($p['carteira_latam_brl']??null));row('LATAM Pass',isset($p['milhas_latam'])?number_format($p['milhas_latam'],0,',','.').' milhas':'A confirmar');?>
-<h2>Cartão Black</h2><?php row('Limite disponível',money($c['limite_disponivel_black_brl']??null));row('Melhor data de compra',day($c['melhor_data_compra_black']??null));?></section></div>
+<?php if(isset($p['cofrinhos_itau'])): $pots=$p['cofrinhos_itau']; ?>
+<h2>Cofrinhos Itaú</h2><?php
+row('Total guardado', money($pots['total_brl']), day($pots['data']));
+foreach ($pots['saldos'] as $name=>$amount) row($name, money($amount));
+row('Rendimento acumulado', money($pots['rendimento_brl']));
+endif;
+if(isset($c['mercado_pago'])): $mp=$c['mercado_pago']; ?>
+<h2>Mercado Pago Visa</h2><?php
+row('Fatura parcial', money($mp['fatura_parcial_brl']), 'Fecha em '.day($mp['fechamento']));
+row('Limite disponível', money($mp['limite_brl']));
+endif; ?>
+<h2><?=h($c['nome_black']??'Cartão Black')?></h2><?php row('Limite disponível',money($c['limite_disponivel_black_brl']??null));row('Melhor data de compra',day($c['melhor_data_compra_black']??null));?></section></div>
 <details><summary>Movimentações e comprovantes</summary><?php foreach(array_reverse($d['lancamentos']) as $x): $value=isset($x['origem_brl'])?money($x['origem_brl']).' → '.money($x['destino_usd'],'US$'):(isset($x['valor_usd'])?money($x['valor_usd'],'US$'):money($x['valor_brl']??null)); row(ucfirst($x['tipo']).' · '.$x['conta'],$value,implode(' · ',array_filter([$x['data']??$x['data_local']??$x['vencimento']??$x['mes_vencimento']??'', $x['pagamento']??'']))); if(!empty($x['fontes'][0]) && preg_match('/^[a-f0-9]+$/D',$x['fontes'][0])):?><a class="proof" target="_blank" rel="noreferrer" href="https://mail.google.com/mail/u/0/#all/<?=h($x['fontes'][0])?>">Ver comprovante no Gmail</a><?php endif;endforeach;?></details>
 <details><summary>Pendências do mês</summary><ul><?php foreach($d['pendencias'] as $item)echo '<li>'.h($item).'</li>';?></ul></details>
 </main><?php endif;?></body></html>
