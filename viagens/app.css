@@ -29,3 +29,30 @@ body.task-detail-open{overflow:hidden}.task-detail{inset:0 0 0 auto;margin:0;wid
 .comment-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px}.comment-heading h3{margin:0}.task-comment{padding:18px 0;border-bottom:1px solid var(--line)}.task-comment header{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:14px;margin-bottom:10px}.task-comment time{font-size:12px;color:var(--muted)}.task-comment p{white-space:pre-wrap;overflow-wrap:anywhere}.comment-empty{color:var(--muted);padding:8px 0 20px}#comment-form{display:grid;gap:12px;margin-top:24px}#comment-form label{font-size:14px}#comment-form textarea{width:100%;min-height:100px;resize:vertical}.comment-upload{display:grid;gap:8px}#comment-files{width:100%;min-width:0;font-size:13px}#send-comment{justify-self:start}.comment-pending-file{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.comment-pending-file span{min-width:0;overflow-wrap:anywhere;flex:1}.comment-pending-file button{color:var(--muted);text-decoration:underline}.task-comments .field-hint{font-size:12px;line-height:1.6}.task-comments textarea{background:var(--deep);color:var(--bone);border:1px solid #ffffff38;padding:12px}
 
 .avatar,.member-badges i{overflow:hidden;flex-shrink:0}.avatar img,.member-badges img{display:block;width:100%;height:100%;object-fit:cover}.profile>.avatar{width:42px;height:42px}.member-badges i{width:32px;height:32px}.member-profile{display:flex;align-items:center;gap:12px}.member-profile .avatar{width:48px;height:48px}
+
+button.trip-switch{width:100%;background:transparent;color:var(--bone);text-align:left;font-family:inherit;cursor:pointer}
+.trip-switch>span:nth-child(2){flex:1;min-width:0;overflow-wrap:anywhere}
+.trip-switch>svg{flex:none;width:15px;height:15px}
+.trip-switch[aria-expanded=true]{margin-bottom:0;border-color:var(--muted)}
+.trip-switch[aria-expanded=true]>svg{transform:rotate(180deg)}
+#trip-options{border:1px solid var(--line);margin:4px 0 18px;padding:4px;max-height:38vh;overflow-y:auto}
+#trip-options button{display:block;width:100%;background:transparent;color:var(--bone);text-align:left;padding:10px;border:0;font:inherit;cursor:pointer;overflow-wrap:anywhere}
+#trip-options small{display:block;color:var(--muted);margin-top:3px}
+#trip-options button:hover,#trip-options button:focus-visible,#trip-options [aria-current=true]{background:var(--raised)}
+#trip-options #nova-viagem{display:flex;gap:8px;align-items:center;border-top:1px solid var(--line);color:var(--bone)}
+#trip-options svg{width:16px}
+.paisagem-medellin{--cenario:url(assets/medellin.webp)}
+.paisagem-litoral{--cenario:url(assets/litoral.webp)}
+.paisagem-cidade{--cenario:url(assets/cidade.webp)}
+.paisagem-serra{--cenario:url(assets/serra.webp)}
+.route-panel{overflow:hidden;isolation:isolate}
+.route-panel::before{content:"";position:absolute;inset:0 0 42px;z-index:-1;background:linear-gradient(90deg,rgba(10,15,24,.76),rgba(10,15,24,.15) 47%,rgba(10,15,24,.52)),var(--cenario) center center/cover no-repeat}
+.route-panel .route-title,.route-panel .airport small{color:#fff;text-shadow:0 1px 4px #14202a}
+.route-panel .route-line{background:#ffffff92}
+.route-panel .route-meta{background:var(--deep);margin:12px -26px -22px;padding:13px 26px;position:relative}
+.route-panel .airport{max-width:33%;overflow-wrap:anywhere}
+.route-panel .city-only strong{font-size:clamp(17px,2vw,26px);line-height:1.12}
+.route-panel .route-cartoon{min-width:64px}
+@media(max-width:600px){.route-panel .route-meta{margin:8px -18px -18px;padding:12px 18px}.route-panel .airport small{font-size:10px}.route-panel:before{background-position:center}}
+
+@media(max-width:360px){.route-cartoon span,.route-cartoon img{width:88px}.route-panel .airport{max-width:31%}}
